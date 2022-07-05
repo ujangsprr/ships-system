@@ -422,12 +422,13 @@ include('data.php')
         var mymap = L.map('map', { zoomControl: false }).setView([-7.189929611713598, 112.70793909022805], 13);
         var lat1 = <?= $lat1; ?>;
         var lon1 = <?= $lon1; ?>;
-        var ang1 = <?= $hdgnew1; ?>;
         var lat2 = <?= $lat2; ?>;
         var lon2 = <?= $lon2; ?>;
-        var ang2 = <?= $hdgnew2; ?>;
+        
+        var ang1 = <?= $hdgmap1; ?>;
+        var ang2 = <?= $hdgmap2; ?>;
 
-        console.log(lat1);
+        console.log(ang1, ang2);
         
         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
             maxZoom: 18,
@@ -445,14 +446,15 @@ include('data.php')
         L.marker([lat1, lon1], {
             icon: markerkapal,
             rotationAngle: ang1,
-            draggable: true
+            draggable: false
         }).addTo(mymap);
 
         L.marker([lat2, lon2], {
             icon: markerkapal,
             rotationAngle: ang2,
-            draggable: true
+            draggable: false
         }).addTo(mymap);
+
     </script>
 
     <script src="vendor/jquery/jquery.min.js"></script>

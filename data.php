@@ -133,6 +133,12 @@ if(isset($_POST['submit'])){
         else if($hdgnew2 >= 180 && $hdgnew2 < 270){ $kudhdg2 = 3; } // 181 - 270 masuk kuadran 3
         else if($hdgnew2 >= 270 && $hdgnew2 < 360){ $kudhdg2 = 4; } // 271 - 360 masuk kuadran 4
 
+        if($hdgnew1 >= 0 && $hdgnew1 < 270){ $hdgmap1 = $hdgnew1 + 90; }
+        else if($hdgnew1 >= 270 && $hdgnew1 < 360){ $hdgmap1 = $hdgnew1 - 270; }
+
+        if($hdgnew2 >= 0 && $hdgnew2 < 270){ $hdgmap2 = $hdgnew2 + 90; }
+        else if($hdgnew2 >= 270 && $hdgnew2 < 360){ $hdgmap2 = $hdgnew2 - 270; }
+
         // menghitung jarak dari 2 kapal dengan memanggil fungsi haversine dan disimpan di variabel distance
         $distance =  haversineGreatCircleDistance($lat1, $lon1, $lat2, $lon2);
 
