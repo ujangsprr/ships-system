@@ -82,6 +82,9 @@ function haversineGreatCircleDistance($latitudeFrom, $longitudeFrom, $latitudeTo
 if(isset($_POST['submit'])){
     // mengecek apakah input ShipsA dan ShipsB kosong atau tidak
     if(!empty($_POST['ShipsA']) && !empty($_POST['ShipsB'])) {
+        $query = "UPDATE `alarm` SET `state` = 0 WHERE `alarm`.`id` = 1";
+        $connection->query($query);
+
         // mengambil data ID Kapal yang dipilih
         $ShipsA = $_POST['ShipsA'];
         $ShipsB = $_POST['ShipsB'];
