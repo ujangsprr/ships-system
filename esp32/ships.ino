@@ -11,11 +11,11 @@
 const char WIFI_SSID[] = "WS Clown Project 2.4G";
 const char WIFI_PASSWORD[] = "membadutbersama";
 
-String GET_SERVER = "http://192.168.1.12/ships/get";
-String STOP_URL = "http://192.168.1.12/ships/change";
+String GET_SERVER = "http://ais.afifzuhri.com/ghozi/get";
+String STOP_URL = "http://ais.afifzuhri.com/ghozi/change";
 
 #define BOTtoken "5441350609:AAGpFI3X350uvCydNxjZS5PJp7ay4mSY-os"
-#define CHAT_ID "908856036"
+#define CHAT_ID "1400368901"
 
 WiFiClientSecure client;
 UniversalTelegramBot bot(BOTtoken, client);
@@ -95,12 +95,17 @@ void loop() {
     http.end();
     }
   }
-  
-  if(notif == 0){
-    bot.sendMessage(CHAT_ID, "AMAN", "");
-  }
-  else if(notif == 1){
-    bot.sendMessage(CHAT_ID, "BAHAYA", "");
+
+  currentMillis = millis();
+  if (currentMillis - previousMillis >= 3000) {
+    previousMillis = currentMillis;
+    
+    if(notif == 0){
+      bot.sendMessage(CHAT_ID, "AMAN", "");
+    }
+    else if(notif == 1){
+      bot.sendMessage(CHAT_ID, "BAHAYA", "");
+    }
   }
 
   if(notif == 0){
